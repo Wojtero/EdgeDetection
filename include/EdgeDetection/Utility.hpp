@@ -1,17 +1,17 @@
 #pragma once
 
 #include <string_view>
+#include <vector>
 #include <CImg.h>
-
 #include "EdgeDetectionTypes.hpp"
 
 namespace EdgeDetection::Utility
 {
 	using namespace Types;
 
-	auto loadImage(std::string_view pathToImage) -> Image;
+	Image loadImage(std::string_view pathToImage);
 
 	void saveImage(const Image& image, std::string_view pathToImage);
 
-	auto toGrayscale(const Image& image) -> Image;
+	Image toGrayscale(const Image& image);
 }

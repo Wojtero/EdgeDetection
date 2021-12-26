@@ -5,25 +5,24 @@
 
 namespace EdgeDetection::Utility
 {
-	auto loadImage(std::string_view pathToImage) -> Image
+	Image loadImage(std::string_view pathToImage)
 	{
 		return Image{pathToImage.data()};
 	}
 
 	void saveImage(const Image& image, std::string_view pathToImage)
 	{
-		image.save_jpeg(pathToImage.data());
+		image.save(pathToImage.data());
 	}
 
-	auto toGrayscale(const Image& image) -> Image
+	Image toGrayscale(const Image& image)
 	{
 		assert(image.spectrum() >= 3);
 
 		auto calculateGray = [](Byte red, Byte green, Byte blue) -> Byte
 		{
-			const float redWeight = 0.299;
-			const float greenWeight = 0.587;
-			const float blueWeight = 0.114;
+			const auto [redWeight, greenWeight, blueWeight]
+				= std::tuple{0.299f, 0.587f, 0.114f};
 
 			const float weightedRed = redWeight * static_cast<float>(red);
 			const float weightedGreen = greenWeight * static_cast<float>(green);
@@ -40,7 +39,7 @@ namespace EdgeDetection::Utility
 
 		cimg_forXYZ(grayImage, x, y, z)
 		{
-			grayImage._atXY(x, y) = calculateGray(image(x, y, z, redIndex),
+			grayImage.atXY(x, y) = calculateGray(image(x, y, z, redIndex),
 				image(x, y, z, greenIndex),
 				image(x, y, z, blueIndex));
 		}
