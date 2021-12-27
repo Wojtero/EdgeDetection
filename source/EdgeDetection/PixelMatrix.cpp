@@ -16,9 +16,20 @@ namespace EdgeDetection
 		return pixels.at(x + width * y);
 	}
 
+	Types::Byte& PixelMatrix::at(const Vector2Int& position)
+	{
+		return at(position.x, position.y);
+	}
+	
+
 	Types::Byte PixelMatrix::at(int x, int y) const
 	{
 		return pixels.at(x + width * y);
+	}
+
+	Types::Byte PixelMatrix::at(const Vector2Int& position) const
+	{
+		return at(position.x, position.y);
 	}
 
 	Types::Byte PixelMatrix::atSafe(int x, int y, Types::Byte alternative) const
@@ -29,6 +40,11 @@ namespace EdgeDetection
 		}
 
 		return pixels.at(x + width * y);
+	}
+
+	Types::Byte PixelMatrix::atSafe(const Vector2Int& position, Types::Byte alternative) const
+	{
+		return atSafe(position.x, position.y, alternative);
 	}
 
 	int PixelMatrix::getWidth() const
