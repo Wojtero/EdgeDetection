@@ -13,6 +13,8 @@ add_executable(EdgeDetection
         source/EdgeDetection/Utility.cpp include/EdgeDetection/Utility.hpp
         include/EdgeDetection/EdgeDetectionTypes.hpp
         include/EdgeDetection.hpp
-        source/EdgeDetection/PixelMatrix.cpp include/EdgeDetection/PixelMatrix.hpp)
+        source/EdgeDetection/PixelMatrix.cpp include/EdgeDetection/PixelMatrix.hpp
+        source/EdgeDetection/Filter.cpp include/EdgeDetection/Filter.hpp
+        source/EdgeDetection/NoiseReductionFilter.cpp include/EdgeDetection/NoiseReductionFilter.hpp)
 
 target_include_directories(EdgeDetection PUBLIC ${INCLUDE_DIRS})

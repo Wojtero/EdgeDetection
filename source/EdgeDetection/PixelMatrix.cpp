@@ -21,6 +21,16 @@ namespace EdgeDetection
 		return pixels.at(x + width * y);
 	}
 
+	Types::Byte PixelMatrix::atSafe(int x, int y, Types::Byte alternative) const
+	{
+		if ((x < 0 || width-1 < x) || (y < 0 || height-1 < y))
+		{
+			return alternative;
+		}
+
+		return pixels.at(x + width * y);
+	}
+
 	int PixelMatrix::getWidth() const
 	{
 		return width;

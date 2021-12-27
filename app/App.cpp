@@ -10,6 +10,10 @@ int main()
 
 	// Here goes the detection algorithm on pixel matrix
 
+	// Noise reduction
+	NoiseReductionFilter noiseReductionFilter {};
+	noiseReductionFilter.filterPixelMatrix(pixelMatrix);
+
 	Utility::saveImage(pixelMatrix.toImage(), "../output/Lenna.jpg");
 
 	return 0;

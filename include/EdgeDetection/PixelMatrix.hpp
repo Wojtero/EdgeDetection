@@ -16,20 +16,24 @@ namespace EdgeDetection
 
 		explicit PixelMatrix(const Types::Image& image);
 
-		[[nodiscard]]
-		inline Types::Byte& at(int x, int y);
+		PixelMatrix(const PixelMatrix& pixelMatrix) = default;
+
+		Types::Byte& at(int x, int y);
 
 		[[nodiscard]]
-		inline Types::Byte at(int x, int y) const;
+		Types::Byte at(int x, int y) const;
 
 		[[nodiscard]]
-		inline int getWidth() const;
+		Types::Byte atSafe(int x, int y, Types::Byte alternative) const;
 
 		[[nodiscard]]
-		inline int getHeight() const;
+		int getWidth() const;
 
 		[[nodiscard]]
-		inline const std::vector<Types::Byte>& getPixels() const;
+		int getHeight() const;
+
+		[[nodiscard]]
+		const std::vector<Types::Byte>& getPixels() const;
 
 		[[nodiscard]]
 		Types::Image toImage() const;
