@@ -11,14 +11,31 @@ namespace EdgeDetection
 		assert(image.spectrum() == 1);
 	}
 
+	PixelMatrix::PixelMatrix(int width, int height)
+		: width(width), height(height) 
+	{
+		pixels.assign(width * height, 0); // Fill with zeroes
+	}
+
 	Types::Byte& PixelMatrix::at(int x, int y)
 	{
 		return pixels.at(x + width * y);
 	}
 
+	Types::Byte& PixelMatrix::at(const Vector2Int& position)
+	{
+		return at(position.x, position.y);
+	}
+	
+
 	Types::Byte PixelMatrix::at(int x, int y) const
 	{
 		return pixels.at(x + width * y);
+	}
+
+	Types::Byte PixelMatrix::at(const Vector2Int& position) const
+	{
+		return at(position.x, position.y);
 	}
 
 	Types::Byte PixelMatrix::atSafe(int x, int y, Types::Byte alternative) const
@@ -29,6 +46,11 @@ namespace EdgeDetection
 		}
 
 		return pixels.at(x + width * y);
+	}
+
+	Types::Byte PixelMatrix::atSafe(const Vector2Int& position, Types::Byte alternative) const
+	{
+		return atSafe(position.x, position.y, alternative);
 	}
 
 	int PixelMatrix::getWidth() const
@@ -56,5 +78,20 @@ namespace EdgeDetection
 		}
 
 		return image;
+	}
+
+	std::ostream& operator<<(std::ostream& out, const PixelMatrix& matrix)
+	{
+		for (int y = 0; y < matrix.getHeight(); y++)
+		{
+			for (int x = 0; x < matrix.getWidth(); x++)
+			{
+				Types::Byte value = matrix.at(x, y);
+				out << (int)value << " ";
+			}
+			out << std::endl;
+		}
+
+		return out;
 	}
 }

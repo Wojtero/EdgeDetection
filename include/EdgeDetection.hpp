@@ -5,3 +5,4 @@
 #include "EdgeDetection/PixelMatrix.hpp"
 #include "EdgeDetection/Filter.hpp"
 #include "EdgeDetection/NoiseReductionFilter.hpp"
+#include "EdgeDetection/GradientSuppression.hpp"
