@@ -3,6 +3,7 @@
 #include <vector>
 #include "EdgeDetectionTypes.hpp"
 #include "Vector2Int.hpp"
+#include <iostream>
 
 namespace EdgeDetection
 {
@@ -14,6 +15,7 @@ namespace EdgeDetection
 	  public:
 
 		PixelMatrix() = delete;
+		PixelMatrix(int width, int height);
 
 		explicit PixelMatrix(const Types::Image& image);
 
@@ -43,6 +45,8 @@ namespace EdgeDetection
 
 		[[nodiscard]]
 		Types::Image toImage() const;
+
+		friend std::ostream& operator<<(std::ostream& out, const PixelMatrix& matrix);
 
 	  private:
 

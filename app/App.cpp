@@ -14,6 +14,9 @@ int main()
 	NoiseReductionFilter noiseReductionFilter {};
 	noiseReductionFilter.filterPixelMatrix(pixelMatrix);
 
+	// ?
+
+	// Profit
 	Utility::saveImage(pixelMatrix.toImage(), "../output/Lenna.jpg");
 
 	return 0;

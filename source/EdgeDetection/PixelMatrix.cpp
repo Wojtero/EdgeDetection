@@ -11,6 +11,12 @@ namespace EdgeDetection
 		assert(image.spectrum() == 1);
 	}
 
+	PixelMatrix::PixelMatrix(int width, int height)
+		: width(width), height(height) 
+	{
+		pixels.assign(width * height, 0); // Fill with zeroes
+	}
+
 	Types::Byte& PixelMatrix::at(int x, int y)
 	{
 		return pixels.at(x + width * y);
@@ -72,5 +78,20 @@ namespace EdgeDetection
 		}
 
 		return image;
+	}
+
+	std::ostream& operator<<(std::ostream& out, const PixelMatrix& matrix)
+	{
+		for (int y = 0; y < matrix.getHeight(); y++)
+		{
+			for (int x = 0; x < matrix.getWidth(); x++)
+			{
+				Types::Byte value = matrix.at(x, y);
+				out << (int)value << " ";
+			}
+			out << std::endl;
+		}
+
+		return out;
 	}
 }
