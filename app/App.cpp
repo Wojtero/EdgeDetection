@@ -1,6 +1,9 @@
 #include <iostream>
 #include <EdgeDetection.hpp>
 
+#define MAXVAL 180
+#define MINVAL 160
+
 int main(int argc, char* argv[])
 {
 	using namespace EdgeDetection;
@@ -29,6 +32,9 @@ int main(int argc, char* argv[])
 	auto angle = PixelMatrix::getAngle(horizontalMatrix, verticalMatrix);
 
 	suppressNonMaximums(gradient, angle, pixelMatrix);
+
+	PixelMatrix suppressedGradients(pixelMatrix);
+	thresholdHysteresis(suppressedGradients, MAXVAL, MINVAL, pixelMatrix);
 
 	Utility::saveImage(pixelMatrix.toImage(), files.value().at(1).string());
 
