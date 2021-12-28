@@ -10,3 +10,5 @@ winget install ImageMagick
 ```
 
 ![alt text](output/Lenna.jpg)
+
+Zakon Etanolu 2021-2022
