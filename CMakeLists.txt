@@ -15,6 +15,9 @@ add_executable(EdgeDetection
         include/EdgeDetection.hpp
         source/EdgeDetection/PixelMatrix.cpp include/EdgeDetection/PixelMatrix.hpp
         source/EdgeDetection/Filter.cpp include/EdgeDetection/Filter.hpp
-        source/EdgeDetection/NoiseReductionFilter.cpp include/EdgeDetection/NoiseReductionFilter.hpp)
+        source/EdgeDetection/NoiseReductionFilter.cpp include/EdgeDetection/NoiseReductionFilter.hpp
+        source/EdgeDetection/GradientSuppression.cpp include/EdgeDetection/GradientSuppression.hpp
+        source/EdgeDetection/Vector2Int.cpp include/EdgeDetection/Vector2Int.hpp
+        source/EdgeDetection/InputParser.cpp include/EdgeDetection/InputParser.hpp)
 
 target_include_directories(EdgeDetection PUBLIC ${INCLUDE_DIRS})
