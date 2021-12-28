@@ -1,6 +1,5 @@
 #include <iostream>
 #include <EdgeDetection.hpp>
-#include <iostream>
 
 #define MAXVAL 100
 #define MINVAL 50
