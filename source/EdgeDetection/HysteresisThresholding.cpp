@@ -12,6 +12,7 @@ namespace EdgeDetection
 		float height = gradientIntensity.getHeight();
         
         std::vector<Vector2Int> possibleEdgeMiddles = {};
+        std::vector<Vector2Int> doneEdgeMiddles = {};
         Direction neighbourDirections[NUMBER_OF_DIRECTIONS] = {Direction::East, Direction::North, Direction::West, Direction::South};
 
         //all sure-edge pixels neighbouring possible-edge pixels are marked
@@ -48,9 +49,12 @@ namespace EdgeDetection
                 cmpVal = gradientIntensity.atSafe(checkPos, -1);
                 if(cmpVal <= maxVal && cmpVal >= minVal)
                 {
-                    output.at(checkPos) = cmpVal;
+                    if(!Contains(doneEdgeMiddles, checkPos))
+                    {
+                        output.at(checkPos) = cmpVal;
+                        possibleEdgeMiddles.push_back(checkPos);
+                    }
                 }
-                possibleEdgeMiddles.push_back(checkPos);
             }
             possibleEdgeMiddles.pop_back();
         }
@@ -82,6 +86,15 @@ namespace EdgeDetection
             {
                 return true;
             }
+        }
+        return false;
+    }
+
+    bool Contains(std::vector<Vector2Int>& vec, Vector2Int& elem)
+    {
+        for(int i = vec.size()-1; i >=0; i--)
+        {
+            if(vec[i].x == elem.x && vec[i].y == elem.y) return true;
         }
         return false;
     }
