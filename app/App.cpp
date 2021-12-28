@@ -1,5 +1,6 @@
 #include <iostream>
 #include <EdgeDetection.hpp>
+#include <iostream>
 
 #define MAXVAL 180
 #define MINVAL 160
@@ -22,21 +23,30 @@ int main(int argc, char* argv[])
 
 	NoiseReductionFilter{}.filterPixelMatrix(pixelMatrix);
 
-	PixelMatrix horizontalMatrix(pixelMatrix);
-	HorizontalSobelFilter{}.filterPixelMatrix(horizontalMatrix);
+	// Calculating gradient
+	PixelMatrix horizontalGradient(pixelMatrix); // Copy input
+	PixelMatrix& verticalGradient = pixelMatrix;
 
-	PixelMatrix verticalMatrix(pixelMatrix);
-	VerticalSobelFilter{}.filterPixelMatrix(verticalMatrix);
+	HorizontalEdgeFilter horizontalEdgeFilter;
+	horizontalEdgeFilter.filterPixelMatrix(horizontalGradient);
 
-	auto gradient = PixelMatrix::getEdgeGradient(horizontalMatrix, verticalMatrix);
-	auto angle = PixelMatrix::getAngle(horizontalMatrix, verticalMatrix);
+	VerticalEdgeFilter verticalEdgeFilter;
+	verticalEdgeFilter.filterPixelMatrix(verticalGradient);
 
-	suppressNonMaximums(gradient, angle, pixelMatrix);
+	PixelMatrix gradientIntensities(pixelMatrix.getWidth(), pixelMatrix.getHeight());
+	PixelMatrix gradientDirections(pixelMatrix.getWidth(), pixelMatrix.getHeight());
+	calculateGradient(horizontalGradient, verticalGradient, gradientIntensities, gradientDirections);
 
-	PixelMatrix suppressedGradients(pixelMatrix);
-	thresholdHysteresis(suppressedGradients, MAXVAL, MINVAL, pixelMatrix);
+	PixelMatrix suppressedIntensities(pixelMatrix.getWidth(), pixelMatrix.getHeight());
+	suppressNonMaximums(gradientIntensities, gradientDirections, suppressedIntensities);
 
-	Utility::saveImage(pixelMatrix.toImage(), files.value().at(1).string());
+	// Threshold hystheresis
+	//PixelMatrix thresheld(pixelMatrix.getWidth(), pixelMatrix.getHeight());
+	//thresholdHysteresis(suppressedIntensities, MAXVAL, MINVAL, thresheld);
+
+	// Profit
+	Utility::saveImage(suppressedIntensities.toImage(), files.value().at(1).string());
+
 
 	return 0;
 }

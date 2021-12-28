@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# IDE directories
+.vs
+
+# Build directories
+out/build
