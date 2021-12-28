@@ -7,3 +7,4 @@
 #include "EdgeDetection/NoiseReductionFilter.hpp"
 #include "EdgeDetection/GradientSuppression.hpp"
 #include "EdgeDetection/InputParser.hpp"
+#include "EdgeDetection/HysteresisThresholding.hpp"
