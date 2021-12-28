@@ -24,7 +24,7 @@ namespace EdgeDetection
 
 				if(currVal > maxVal)
                 {
-                    output.at(currPos) = currVal;
+                    output.at(currPos) = 255;
                     if(isPossibleEdgeMiddle(gradientIntensity, currPos, maxVal, minVal, neighbourDirections))
                     {
                         possibleEdgeMiddles.push_back(currPos);
@@ -49,7 +49,7 @@ namespace EdgeDetection
                 {
                     if(!Contains(doneEdgeMiddles, checkPos))
                     {
-                        output.at(checkPos) = cmpVal;
+                        output.at(checkPos) = 255;
                         possibleEdgeMiddles.push_back(checkPos);
                     }
                 }
