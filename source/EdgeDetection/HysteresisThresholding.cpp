@@ -56,6 +56,7 @@ namespace EdgeDetection
                     }
                 }
             }
+            doneEdgeMiddles.push_back(currPos);
             possibleEdgeMiddles.pop_back();
         }
 
