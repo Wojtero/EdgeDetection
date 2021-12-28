@@ -19,8 +19,6 @@ add_executable(EdgeDetection
         source/EdgeDetection/GradientSuppression.cpp include/EdgeDetection/GradientSuppression.hpp
         source/EdgeDetection/Vector2Int.cpp include/EdgeDetection/Vector2Int.hpp
         source/EdgeDetection/InputParser.cpp include/EdgeDetection/InputParser.hpp
-        source/EdgeDetection/HorizontalSobelFilter.cpp include/EdgeDetection/HorizontalSobelFilter.hpp
-        source/EdgeDetection/VerticalSobelFilter.cpp include/EdgeDetection/VerticalSobelFilter.hpp
         source/EdgeDetection/HysteresisThresholding.cpp include/EdgeDetection/HysteresisThresholding.hpp
         source/EdgeDetection/SignedFilter.cpp include/EdgeDetection/SignedFilter.hpp
         source/EdgeDetection/HorizontalEdgeFilter.cpp include/EdgeDetection/HorizontalEdgeFilter.hpp
