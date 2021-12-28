@@ -9,6 +9,11 @@ namespace EdgeDetection
 		West, NorthWest
 	};
 
+	/*
+	Rounds angle in radians (from -PI to PI) to a direction
+	*/
+	Direction angleToDirection(float angle);
+
 
 	struct Vector2Int
 	{

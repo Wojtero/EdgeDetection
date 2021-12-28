@@ -6,3 +6,6 @@
 #include "EdgeDetection/Filter.hpp"
 #include "EdgeDetection/NoiseReductionFilter.hpp"
 #include "EdgeDetection/GradientSuppression.hpp"
+#include "EdgeDetection/HorizontalEdgeFilter.hpp"
+#include "EdgeDetection/VerticalEdgeFilter.hpp"
+#include "EdgeDetection/GradientCalculation.hpp"
