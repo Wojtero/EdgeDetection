@@ -8,3 +8,5 @@ or
 ```
 winget install ImageMagick
 ```
+
+![alt text](output/Lenna.jpg)

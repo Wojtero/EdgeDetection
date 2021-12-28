@@ -1,22 +1,30 @@
+#include <iostream>
 #include <EdgeDetection.hpp>
 #include <iostream>
 
-int main()
+#define MAXVAL 180
+#define MINVAL 160
+
+int main(int argc, char* argv[])
 {
 	using namespace EdgeDetection;
 
-	auto image = Utility::loadImage("../input/Lenna.jpg");
+	auto files = InputParser{}.parseInput(argc, argv);
+
+	if (!files.has_value())
+	{
+		std::cout << "Usage: EdgeDetection <pathToInput> <pathToOutput>\n";
+		return 1;
+	}
+
+	auto image = Utility::loadImage(files.value().at(0).string());
 	auto grayImage = Utility::toGrayscale(image);
 	PixelMatrix pixelMatrix(grayImage);
 
-	// Here goes the detection algorithm on pixel matrix
-
-	// Noise reduction
-	NoiseReductionFilter noiseReductionFilter {};
-	noiseReductionFilter.filterPixelMatrix(pixelMatrix);
+	NoiseReductionFilter{}.filterPixelMatrix(pixelMatrix);
 
 	// Calculating gradient
-	PixelMatrix horizontalGradient = PixelMatrix(pixelMatrix); // Copy input
+	PixelMatrix horizontalGradient(pixelMatrix); // Copy input
 	PixelMatrix& verticalGradient = pixelMatrix;
 
 	HorizontalEdgeFilter horizontalEdgeFilter;
@@ -32,8 +40,13 @@ int main()
 	PixelMatrix suppressedIntensities(pixelMatrix.getWidth(), pixelMatrix.getHeight());
 	suppressNonMaximums(gradientIntensities, gradientDirections, suppressedIntensities);
 
+	// Threshold hystheresis
+	//PixelMatrix thresheld(pixelMatrix.getWidth(), pixelMatrix.getHeight());
+	//thresholdHysteresis(suppressedIntensities, MAXVAL, MINVAL, thresheld);
+
 	// Profit
-	Utility::saveImage(suppressedIntensities.toImage(), "../output/Lenna.jpg");
+	Utility::saveImage(suppressedIntensities.toImage(), files.value().at(1).string());
+
 
 	return 0;
 }
