@@ -48,6 +48,10 @@ namespace EdgeDetection
 
 		friend std::ostream& operator<<(std::ostream& out, const PixelMatrix& matrix);
 
+		static PixelMatrix getEdgeGradient(const PixelMatrix& horizontal, const PixelMatrix& vertical);
+
+		static PixelMatrix getAngle(const PixelMatrix& horizontal, const PixelMatrix& vertical);
+
 	  private:
 
 		int width {};

@@ -94,4 +94,48 @@ namespace EdgeDetection
 
 		return out;
 	}
+
+	PixelMatrix PixelMatrix::getEdgeGradient(const PixelMatrix& horizontal, const PixelMatrix& vertical)
+	{
+		assert(horizontal.width == vertical.width && horizontal.height == vertical.height);
+
+		PixelMatrix output (horizontal.width, horizontal.height);
+
+		const auto width = horizontal.width;
+		const auto height = horizontal.height;
+
+		for (int i = 0; i < width; ++i)
+		{
+			for (int j = 0; j < height; ++j)
+			{
+				const auto gX = static_cast<float>(horizontal.at(i, j));
+				const auto gY = static_cast<float>(vertical.at(i, j));
+				output.at(i, j) = static_cast<Types::Byte>(std::sqrt(gX*gX + gY*gY));
+			}
+		}
+
+		return output;
+	}
+
+	PixelMatrix PixelMatrix::getAngle(const PixelMatrix& horizontal, const PixelMatrix& vertical)
+	{
+		assert(horizontal.width == vertical.width && horizontal.height == vertical.height);
+
+		PixelMatrix output (horizontal.width, horizontal.height);
+
+		const auto width = horizontal.width;
+		const auto height = horizontal.height;
+
+		for (int i = 0; i < width; ++i)
+		{
+			for (int j = 0; j < height; ++j)
+			{
+				const auto gX = static_cast<float>(horizontal.at(i, j));
+				const auto gY = static_cast<float>(vertical.at(i, j));
+				output.at(i, j) = static_cast<Types::Byte>(std::atan(gX / gY));
+			}
+		}
+
+		return output;
+	}
 }
