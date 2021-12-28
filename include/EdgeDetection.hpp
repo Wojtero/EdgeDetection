@@ -10,3 +10,4 @@
 #include "EdgeDetection/HysteresisThresholding.hpp"
 #include "EdgeDetection/HorizontalSobelFilter.hpp"
 #include "EdgeDetection/VerticalSobelFilter.hpp"
+#include "EdgeDetection/HysteresisThresholding.hpp"

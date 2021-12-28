@@ -11,4 +11,9 @@ namespace EdgeDetection
     pixels between maxVal and minVal are suppressed if they do not neighbour a sure-edge pixel 
 	*/
 	void thresholdHysteresis(const PixelMatrix& gradientIntensity, const int maxVal, const int minVal, PixelMatrix& output);
+
+	bool Contains(std::vector<Vector2Int>& vec, Vector2Int& elem);
+
+	bool isPossibleEdgeMiddle(const PixelMatrix& gradientIntensity, const Vector2Int pos, const int maxVal,
+		const int minVal, const Direction directions[]);
 }
