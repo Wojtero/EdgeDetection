@@ -8,3 +8,5 @@
 #include "EdgeDetection/GradientSuppression.hpp"
 #include "EdgeDetection/InputParser.hpp"
 #include "EdgeDetection/HysteresisThresholding.hpp"
+#include "EdgeDetection/HorizontalSobelFilter.hpp"
+#include "EdgeDetection/VerticalSobelFilter.hpp"

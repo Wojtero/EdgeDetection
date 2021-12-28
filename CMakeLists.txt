@@ -18,6 +18,6 @@ add_executable(EdgeDetection
         source/EdgeDetection/NoiseReductionFilter.cpp include/EdgeDetection/NoiseReductionFilter.hpp
         source/EdgeDetection/GradientSuppression.cpp include/EdgeDetection/GradientSuppression.hpp
         source/EdgeDetection/Vector2Int.cpp include/EdgeDetection/Vector2Int.hpp
-        source/EdgeDetection/InputParser.cpp include/EdgeDetection/InputParser.hpp)
+        source/EdgeDetection/InputParser.cpp include/EdgeDetection/InputParser.hpp source/EdgeDetection/HorizontalSobelFilter.cpp include/EdgeDetection/HorizontalSobelFilter.hpp source/EdgeDetection/VerticalSobelFilter.cpp include/EdgeDetection/VerticalSobelFilter.hpp)
 
 target_include_directories(EdgeDetection PUBLIC ${INCLUDE_DIRS})
