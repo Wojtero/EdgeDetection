@@ -17,14 +17,19 @@ int main(int argc, char* argv[])
 	auto grayImage = Utility::toGrayscale(image);
 	PixelMatrix pixelMatrix(grayImage);
 
-	// Here goes the detection algorithm on pixel matrix
-
-	// Noise reduction
 	NoiseReductionFilter{}.filterPixelMatrix(pixelMatrix);
 
-	// ?
+	PixelMatrix horizontalMatrix(pixelMatrix);
+	HorizontalSobelFilter{}.filterPixelMatrix(horizontalMatrix);
 
-	// Profit
+	PixelMatrix verticalMatrix(pixelMatrix);
+	VerticalSobelFilter{}.filterPixelMatrix(verticalMatrix);
+
+	auto gradient = PixelMatrix::getEdgeGradient(horizontalMatrix, verticalMatrix);
+	auto angle = PixelMatrix::getAngle(horizontalMatrix, verticalMatrix);
+
+	suppressNonMaximums(gradient, angle, pixelMatrix);
+
 	Utility::saveImage(pixelMatrix.toImage(), files.value().at(1).string());
 
 	return 0;
