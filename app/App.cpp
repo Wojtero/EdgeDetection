@@ -1,6 +1,5 @@
 #include <iostream>
 #include <EdgeDetection.hpp>
-#include <iostream>
 
 #define MAXVAL 180
 #define MINVAL 160
@@ -41,8 +40,8 @@ int main(int argc, char* argv[])
 	suppressNonMaximums(gradientIntensities, gradientDirections, suppressedIntensities);
 
 	// Threshold hystheresis
-	//PixelMatrix thresheld(pixelMatrix.getWidth(), pixelMatrix.getHeight());
-	//thresholdHysteresis(suppressedIntensities, MAXVAL, MINVAL, thresheld);
+	PixelMatrix thresheld(pixelMatrix.getWidth(), pixelMatrix.getHeight());
+	thresholdHysteresis(suppressedIntensities, MAXVAL, MINVAL, thresheld);
 
 	// Profit
 	Utility::saveImage(suppressedIntensities.toImage(), files.value().at(1).string());

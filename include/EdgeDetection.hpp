@@ -11,3 +11,7 @@
 #include "EdgeDetection/GradientCalculation.hpp"
 #include "EdgeDetection/InputParser.hpp"
 #include "EdgeDetection/HysteresisThresholding.hpp"
+#include "EdgeDetection/VerticalEdgeFilter.hpp"
+#include "EdgeDetection/HorizontalEdgeFilter.hpp"
+#include "EdgeDetection/SignedFilter.hpp"
+#include "EdgeDetection/GradientCalculation.hpp"

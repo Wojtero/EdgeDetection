@@ -14,7 +14,6 @@ namespace EdgeDetection
         std::vector<Vector2Int> possibleEdgeMiddles = {};
         std::vector<Vector2Int> doneEdgeMiddles = {};
         Direction neighbourDirections[NUMBER_OF_DIRECTIONS] = {Direction::East, Direction::North, Direction::West, Direction::South};
-
         //all sure-edge pixels neighbouring possible-edge pixels are marked
 		for (int x = 0; x < width; x++)
 		{
@@ -37,7 +36,6 @@ namespace EdgeDetection
                 }
 			}
 		}
-
         // extend edges
         while(possibleEdgeMiddles.size() > 0)
         {
@@ -59,8 +57,6 @@ namespace EdgeDetection
             doneEdgeMiddles.push_back(currPos);
             possibleEdgeMiddles.pop_back();
         }
-
-
         // suppress all left pixels between maxVal and minVal
        	for (int x = 0; x < width; x++)
 		{
@@ -93,7 +89,7 @@ namespace EdgeDetection
 
     bool Contains(std::vector<Vector2Int>& vec, Vector2Int& elem)
     {
-        for(int i = vec.size()-1; i >=0; i--)
+		for(int i = vec.size()-1; i >=0; i--)
         {
             if(vec[i].x == elem.x && vec[i].y == elem.y) return true;
         }

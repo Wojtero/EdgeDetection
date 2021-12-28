@@ -21,6 +21,10 @@ add_executable(EdgeDetection
         source/EdgeDetection/InputParser.cpp include/EdgeDetection/InputParser.hpp
         source/EdgeDetection/HorizontalSobelFilter.cpp include/EdgeDetection/HorizontalSobelFilter.hpp
         source/EdgeDetection/VerticalSobelFilter.cpp include/EdgeDetection/VerticalSobelFilter.hpp
-        source/EdgeDetection/HysteresisThresholding.cpp include/EdgeDetection/HysteresisThresholding.hpp)
+        source/EdgeDetection/HysteresisThresholding.cpp include/EdgeDetection/HysteresisThresholding.hpp
+        source/EdgeDetection/SignedFilter.cpp include/EdgeDetection/SignedFilter.hpp
+        source/EdgeDetection/HorizontalEdgeFilter.cpp include/EdgeDetection/HorizontalEdgeFilter.hpp
+        source/EdgeDetection/VerticalEdgeFilter.cpp include/EdgeDetection/VerticalEdgeFilter.hpp
+        source/EdgeDetection/GradientCalculation.cpp include/EdgeDetection/GradientCalculation.hpp)
 
 target_include_directories(EdgeDetection PUBLIC ${INCLUDE_DIRS})
